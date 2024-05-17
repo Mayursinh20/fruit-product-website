@@ -7,19 +7,23 @@ In this project, I have created a Django web application with user authenticatio
 ```bash
 git clone https://github.com/Mayursinh20/fruit-product-website.git
 ```
-2) makemigration
+2) install requirement
+```base
+pip install -r requirement.txt
+```
+3) makemigration
 ```bash
 python manage.py makemigration
 ```
-3) migrate
+4) migrate
 ```bash
 python manage.py migrate
 ```
-4) createsuperuser
+5) createsuperuser
 ```bash
 python manage.py createsuperuser
 ```
-5) runserver
+6) runserver
 ```bash
 python manage.py runserver
 ```
