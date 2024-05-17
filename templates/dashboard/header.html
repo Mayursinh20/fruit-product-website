@@ -1,0 +1,75 @@
+<!-- header -->
+<div class="top-header-area" id="sticker">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="index.html">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <!-- logo -->
+
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li class="current-list {% if request.resolver_match.url_name == 'home' %} current-list-item {% endif %}"><a href="/">Home</a></li>
+                            <li class="current-list {% if request.resolver_match.url_name == 'about' %} current-list-item {% endif %}"><a href="{% url 'about' %}">About</a></li>
+                            <li><a href="#">Pages</a>
+                            </li>
+                            <li><a href="#">News</a>
+                            </li>
+                            <li class="current-list {% if request.resolver_match.url_name == 'contact' %} current-list-item {% endif %}"><a href="{% url 'contact' %}">Contact</a></li>
+                            <li class="current-list {% if request.resolver_match.url_name == 'shop' %} current-list-item {% endif %}"><a href="{% url 'shop' %}">Shop</a>
+                            </li>
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" id="shopping-cart" href="{% url 'cart' %}"><i class="fas fa-shopping-cart"></i>
+                                        <span id="cart-count" class="cart-count"></span>
+                                    </a>
+                                   
+                                    <li><a class="user"><i class="fas fa-user"></i></a>
+                                        <ul class="sub-menu">
+                                            {% if user.is_authenticated %}
+                                            <form method="post" action="{% url 'logout' %}">
+                                                {% csrf_token %}
+                                                <li><button type="submit" class="logout_btn">Logout</button></li>
+                                            </form>
+                                            {% else %}
+                                                <li><a href="{% url 'login' %}">Login</a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </li>
+                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <input type="text" placeholder="Keywords">
+                        <button type="submit">Search <i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search area -->

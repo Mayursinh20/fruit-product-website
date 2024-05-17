@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+	
+	<!-- title -->
+	<title>Shop</title>
+
+	{% include 'dashboard/css-style.html' %}
+
+</head>
+<body>
+	
+	<!--PreLoader-->
+    <!-- <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div> -->
+    <!--PreLoader Ends-->
+	
+    {% include 'dashboard/header.html' %}
+
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Fresh and Organic</p>
+						<h1>Shop</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<!-- products -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+
+			<div class="row">
+                <div class="col-md-12">
+                    <div class="product-filters">
+                        <ul>
+                            <li class="active" data-filter="*">All</li>
+                            <li data-filter=".strawberry">Strawberry</li>
+                            <li data-filter=".berry">Berry</li>
+                            <li data-filter=".lemon">Lemon</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+			<div class="row product-lists">
+                {% for fruit in fruitdetail %}
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="{% url 'fruitdetail' fruit.id %}"><img src="{{fruit.images.url}}" alt=""></a>
+						</div>
+						<h3>{{fruit.name}}</h3>
+						<p class="product-price"><span>Per Kg</span> {{fruit.price}}$ </p>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input type="text" name="fruit_id" value="{{fruit.id}}" hidden>
+							{% if user.is_authenticated %}
+                            	<button type="button" onclick="addtocart(this)" class="default-btn cart-btn"><i class="fas fa-shopping-cart"></i> Add to cart</button>
+							{% else %}
+								<a href="{% url 'login' %}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+							{% endif %}
+                        </form>
+					</div>
+				</div>
+                {% endfor %}
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="pagination-wrap">
+						<ul>
+							<li><a href="#">Prev</a></li>
+							<li><a href="#">1</a></li>
+							<li><a class="active" href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">Next</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end products -->
+
+	<!-- logo carousel -->
+	{% include 'dashboard/logo-carousel.html' %}
+	<!-- end logo carousel -->
+
+	{% include 'dashboard/footer.html' %}
+
+	{% include 'dashboard/js-style.html' %}
+
+</body>
+</html>
