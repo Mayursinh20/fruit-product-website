@@ -1,0 +1,7 @@
+# SECURITY WARNING: keep the secret key used in production secret!
+DEBUG=True
+SECRET_KEY="django-insecure-b1!z82xg#q+2k58)dg#_g(ul%wvnmu6gine1g4crv_4kjfenb3"
+
+# Razorpay details
+razorpay_key_id=your razorpay key id
+razorpay_key_secret=your razorpay key secret
